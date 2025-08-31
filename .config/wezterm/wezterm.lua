@@ -21,12 +21,34 @@ config.font = wezterm.font 'Fira Code'
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
-config.tab_and_split_indices_are_zero_based = true
+config.tab_and_split_indices_are_zero_based = false
 
 config.window_background_opacity = 0.8
 config.text_background_opacity = 0.4
 
+-- inputs
+config.keys = {
+  { key = 'd', mods = 'CTRL|SHIFT', action = wezterm.action.ShowLauncher },
+ }
 
+-- launch
+-- config.default_prog = {
+--  'usr/bin/env bash'
+--}
+config.launch_menu = {
+  {
+    label = 'Nixos config',
+    cwd = '/etc/nixos/',
+    args = { 'sudo', 'hx' }
+  },
+--  {
+--    args = {'nixos-rebuild', 'switch'}
+--  },
+--  {
+--    label = 'Projects',
+--    cwd = "~/Projects"
+--  }
+}
 
 -- Finally, return the configuration to wezterm:
 return config

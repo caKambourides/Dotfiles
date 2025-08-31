@@ -11,7 +11,7 @@
 }
 #waybar {
     	color: @foreground-inactive;
-    	background-color: rgba(0, 40, 255, 0.1);
+    	background-color: rgba(0, 0, 0, 0.1);
 }
 
 
@@ -79,9 +79,15 @@ button:hover {
 #window,
 #clock,
 #battery,
+#cpu,
+#memory,
+#disk,
+#pulseaudio,
+#pulse,
 #backlight,
 #wireplumber,
 #tray,
+#network,
 #mpris,
 #load {
     padding: 0 10px;
