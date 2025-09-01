@@ -49,6 +49,6 @@ config.launch_menu = {
 --    cwd = "~/Projects"
 --  }
 }
-
+config.default_prog = {"/run/current-system/sw/bin/fish"}
 -- Finally, return the configuration to wezterm:
 return config
