@@ -63,9 +63,13 @@ vim.o.splitbelow = true
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
-vim.o.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+--vim.o.list = true
+--vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 4 
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
 -- Preview substitutions live, as you type!
 vim.o.inccommand = "split"
 
@@ -99,10 +103,10 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -134,3 +138,48 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 require("config.lazy")
+
+        -- vim.lsp.enable('ts_ls')
+        -- vim.lsp.config['ts_ls'] = {
+        --     -- Command and arguments to start the server.
+        --     --cmd = { 'lua-language-server' },
+        --     -- Filetypes to automatically attach to.
+        --     --filetypes = { 'lua' },
+        --     -- Sets the "workspace" to the directory where any of these files is found.
+        --     -- Files that share a root directory will reuse the LSP server connection.
+        --     -- Nested lists indicate equal priority, see |vim.lsp.Config|.
+        --     -- root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
+        --     -- Specific settings to send to the server. The schema is server-defined.
+        --     -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
+        --     settings = {
+        --         typescript = {
+        --             inlayHints = {
+        --
+        --                 includeInlayParameterNameHints = "all",
+        --                 includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        --                 includeInlayFunctionParameterTypeHints = true,
+        --                 includeInlayVariableTypeHints = true,
+        --                 includeInlayPropertyDeclarationTypeHints = true,
+        --                 includeInlayFunctionLikeReturnTypeHints = true,
+        --                 includeInlayEnumMemberValueHints = true,
+        --             }
+        --         }
+        --     }
+        -- }
+        -- vim.lsp.enable('lua-language-server')
+        --
+        --
+        -- -- vim.lsp.config['lua-language-server'] = {
+        -- --     cmd = { "lua-language-server" },
+        -- --     filetypes = { "lua" },
+        -- --     root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".git" },
+        -- --     settings = {
+        -- --         Lua = {
+        -- --             runtime = { version = "LuaJIT" },
+        -- --             diagnostics = { globals = { "vim" } },
+        -- --             workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+        -- --             telemetry = { enable = false },
+        -- --         },
+        -- --     },
+        -- -- }
+        -- vim.lsp.enable('rust-analyzer')
