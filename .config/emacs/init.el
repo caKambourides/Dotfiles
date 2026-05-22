@@ -1,4 +1,3 @@
-
 ;; TODO s ;;
 ;;TODO Fix the indentation stuff
 
@@ -17,7 +16,7 @@
         ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
-;;(package-refresh-contents)
+(package-refresh-contents)
 
 ;;use package should be installed by default?
 ;; package refresh contents updates the repos, could be done manually with m x package-refresh-contents?
@@ -66,6 +65,19 @@
 ;; Enable Evil
 (require 'evil)
 (evil-mode 1)
+;;multi cursors
+(use-package evil-mc
+  :ensure t
+  :hook (after-init . global-evil-mc-mode))
+
+;;better keybinds (for eg magit)
+(use-package evil-collection
+  :ensure t
+  :after evil
+  :init (evil-collection-init))
+
+
+
 
 ;; undo tree
 ;(setq evil-undo-system 'undo-redo)   ;; Emacs 28+ native undo/redo
@@ -82,6 +94,10 @@
   ;(global-undo-tree-mode 1)
   )
 (evil-set-undo-system 'undo-tree)
+
+;; Prevent undo tree files from polluting your git repo
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
 ;;(undo-tree-mode)
 
 ;; copy paste from tty to os
@@ -169,12 +185,11 @@
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (typescript-ts-mode . lsp-deferred)
          (tsx-ts-mode . lsp-deferred)
-         (php-ts-mode . lsp)
+         (php-ts-mode . lsp-deferred)
          (rust-ts-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
-
 (use-package lsp-tailwindcss
     :ensure t
   :after lsp-mode
@@ -190,9 +205,12 @@
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
 ;; optionally
-(unless (package-installed-p 'lsp-ui)
-(package-install 'lsp-ui))
-(lsp-ui-mode -1)
+;;(unless (package-installed-p 'lsp-ui)
+;;(package-install 'lsp-ui))
+;;(use-package lsp-ui
+;;  :ensure t
+;;  :disabled t)
+;;(lsp-ui-mode -1)
 ;; (use-package lsp-ui :commands lsp-ui-mode)
 ;;alt eglot: install the lsp on your machine and configure it here 
 ;;(use-package eglot
@@ -254,6 +272,8 @@
 
 ;;todo verb mode
 
+
+
 ;;todo dbml mode
 ;;(use-package dbml-mode
 ;;  :ensure t)
@@ -275,6 +295,7 @@
 ;;todo prespective
 
 ;;todo org mode
+(setq org-agenda-files '("~/org/"))
 
 ;;todo neotree
 (use-package neotree
@@ -301,6 +322,8 @@
   :diminish
   :hook org-mode prog-mode)
 ;;todo magit
+(unless (package-installed-p 'magit)
+  (package-install 'magit))
 
 ;;dired 
 (use-package dired-open :ensure t
@@ -322,6 +345,11 @@
 )
 
 ;;todo vterm
+(use-package vterm
+  :ensure t
+  :config
+(setq shell-file-name "/bin/sh"
+      vterm-max-scrollback 5000))
 
 ;;todo fonts
 
@@ -380,7 +408,12 @@
      "d481904809c509641a1a1f1b1eb80b94c58c210145effc2631c1a7f2e4a2fdf4"
      "f1e8339b04aef8f145dd4782d03499d9d716fdc0361319411ac2efc603249326"
      default))
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(clipetty company-box consult dashboard dired-open doom-modeline
+	      doom-themes evil evil-collection evil-mc flycheck
+	      git-gutter lsp-tailwindcss lsp-ui magit neotree
+	      orderless peep-dired rainbow-mode undo-tree vertico
+	      xclip)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -390,7 +423,7 @@
 
 ;;
 ;;disable and reconfigure Emacs' default indent behavior 
-(indent-tabs-mode -1) ;;this will make it use spaces instead of tabs
+(setq-default indent-tabs-mode nil) ;;use spaces instead of tabs
 (electric-indent-mode -1) ;;disable atrocious electric indent 
 (global-set-key (kbd "RET") #'newline-and-indent) ;;dumb indent on new line
 (setq tab-always-indent nil) ;;remap tab to add indents 
@@ -583,6 +616,10 @@
 ;; Evil yank
 (advice-add 'evil-yank :after #'my/pulse-yank-advice)
 (advice-add 'evil-yank-line :after #'my/pulse-yank-advice)
+
+
+;;backups
+(setq backup-directory-alist '(("." . "~/.emacs_backups")))
 
 ;;(xterm-mouse-mode 1)
 ;;     (use-package volatile-highlights
