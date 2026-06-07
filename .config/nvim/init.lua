@@ -129,10 +129,15 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set({ 'n', 'i', 'v' }, '<PageUp>', '<Nop>', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'i', 'v' }, '<PageDown>', '<Nop>', { noremap = true, silent = true })
 
+-- CUSTOM KEYS
+vim.keymap.set('n', '<leader>xs', function()
+    vim.cmd('w')
+end, { silent = true, desc = "Write File" })
+
 -- close current buffer
-vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>")
+-- vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>")
 --save with ZZ
-vim.keymap.set("n", "ZZ", ":w<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "ZZ", ":w<CR>", { noremap = true, silent = true })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })

@@ -18,7 +18,7 @@ riverctl keyboard-layout -options "grp:alt_shift_toggle" us,gr
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
 systemctl --user restart xdg-desktop-portal
-
+#export XDG_CURRENT_DESKTOP=KDE #for themeing?
 
 riverctl map normal Super E spawn thunar
 
@@ -28,8 +28,8 @@ riverctl map normal Super D spawn wofi
 riverctl map normal Super Escape spawn swaylock
 
 # grim screenshot
-riverctl map normal Super S spawn 'grim -g "$(slurp)" - | wl-copy'
-
+#riverctl map normal Super S spawn 'grim -g "$(slurp)" - | wl-copy'
+riverctl map normal Super S spawn 'flameshot gui'
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super T spawn wezterm
 

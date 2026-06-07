@@ -57,6 +57,7 @@ return { -- Collection of various small independent plugins/modules
 
         })
 
+        local icons = require("mini.icons")
         local tabline = require("mini.tabline")
         tabline.setup(
         -- No need to copy this inside `setup()`. Will be used automatically.

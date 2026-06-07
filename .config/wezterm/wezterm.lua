@@ -76,9 +76,14 @@ config.keys = {
         }
     },
     {
+      key = 't',
+      mods = 'LEADER',
+      action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+    },
+    {
         key = 'c',
         mods = 'LEADER',
-        action = wezterm.action.CloseCurrentPane { confirm = true },
+        action = wezterm.action.CloseCurrentPane { confirm = false},
     },
     {
         key = 'a',
