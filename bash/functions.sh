@@ -9,3 +9,10 @@ projcd() {
     ) || return
     cd "$dir"
 }
+testsite() {
+    python3 -m http.server 8000
+}
+timer() {
+  sleep "$1"
+  notify-send "Timer done" "${2:-Finished}"
+}
