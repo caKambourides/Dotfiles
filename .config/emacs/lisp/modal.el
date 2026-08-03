@@ -7,16 +7,20 @@
 ;; Download Evil
 (unless (package-installed-p 'evil)
   (package-install 'evil))
+
 ;; Enable Evil
+(setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
 ;;multi cursors
 (use-package evil-mc
   :ensure t
+  :defer t
   :hook (after-init . global-evil-mc-mode))
 ;;better keybinds (for eg magit)
 (use-package evil-collection
   :ensure t
+  :defer t
   :after evil
   :init (evil-collection-init))
 (evil-set-undo-system 'undo-tree)

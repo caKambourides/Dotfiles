@@ -10,6 +10,7 @@
 '((shell . t)))
 (use-package ox-gfm
   :ensure t
+  :defer t
   :after org)
 
 ;; (defun ek/babel-ansi ()

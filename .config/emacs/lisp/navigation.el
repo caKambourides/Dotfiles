@@ -2,14 +2,18 @@
 ;;; Commentary:
 ;;; Code:
 ;; directory navigation
-(use-package dired-open :ensure t
+(use-package dired-open
+  :ensure t
+  :defer t
   :config
   (setq dired-open-extensions '(("gif" . "sxiv")
                                 ("jpg" . "sxiv")
                                 ("png" . "sxiv")
                                 ("mkv" . "mpv")
                                 ("mp4" . "mpv"))))
-(use-package peep-dired :ensure t
+(use-package peep-dired
+  :ensure t
+  :defer t
   :after dired
   :hook (evil-normalize-keymaps . peep-dired-hook)
   :config
@@ -21,6 +25,7 @@
 ;; orderless search
 (use-package orderless
   :ensure t
+  :defer t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles partial-completion))))
@@ -28,6 +33,7 @@
 ;; Enable Vertico.
 (use-package vertico
   :ensure t
+  :defer t
   :custom
    (vertico-scroll-margin 0) ;; Different scroll margin
    (vertico-count 20) ;; Show more candidates
@@ -39,6 +45,7 @@
 ;; Example configuration for Consult
 (use-package consult
     :ensure t
+  :defer t
   ;; Replace bindings. Lazily loaded by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
          ("C-c M-x" . consult-mode-command)

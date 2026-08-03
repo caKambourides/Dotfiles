@@ -26,6 +26,7 @@
 ;;todo modeline
 (use-package doom-modeline
   :ensure t
+  :defer t
   :init (doom-modeline-mode 1)
   :config
   (setq doom-modeline-height 35      ;; sets modeline height
@@ -36,6 +37,7 @@
 ;;colors
 (use-package rainbow-mode
   :ensure t
+  :defer t
   :diminish
   :hook org-mode prog-mode)
 
@@ -58,19 +60,22 @@
 
 (use-package git-gutter
   :ensure t
+  :defer t
   :config
   (global-git-gutter-mode +1))
 
 ;;todo neotree
 (use-package neotree
   :ensure t
+  :defer t
   :config
   (setq neo-smart-open t
         neo-show-hidden-files t
         neo-window-width 55
         neo-window-fixed-size nil
         inhibit-compacting-font-caches t
-        projectile-switch-project-action 'neotree-projectile-action) 
+        ;; projectile-switch-project-action 'neotree-projectile-action
+        )
         ;; truncate long file names in neotree
         (add-hook 'neo-after-create-hook
            #'(lambda (_)

@@ -13,29 +13,24 @@
 # mystuff
 riverctl keyboard-layout us,gr
 riverctl keyboard-layout -options "grp:alt_shift_toggle" us,gr
+riverctl rule-add csd
 
 #xdg portal fix ? 
-systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
-systemctl --user restart xdg-desktop-portal
+#systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+#dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+#systemctl --user restart xdg-desktop-portal
 #export XDG_CURRENT_DESKTOP=KDE #for themeing?
 
 riverctl map normal Super E spawn thunar
-
 riverctl map normal Super D spawn wofi
-
-
 riverctl map normal Super Escape spawn swaylock
-
 # grim screenshot
 #riverctl map normal Super S spawn 'grim -g "$(slurp)" - | wl-copy'
 riverctl map normal Super S spawn 'flameshot gui'
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super T spawn wezterm
-
 # Super+Q to close the focused view
 riverctl map normal Super Q close
-
 # Super+Shift+E to exit river
 riverctl map normal Super+Shift M exit
 
@@ -163,6 +158,7 @@ do
 done
 
 # Set background and border color
+riverctl border-width 0
 riverctl background-color 0x002b36
 riverctl border-color-focused 0x8ec07c
 riverctl border-color-unfocused 0x928374 
@@ -173,7 +169,7 @@ riverctl set-repeat 50 300
 riverctl rule-add -app-id 'float*' -title 'foo' float
 
 # Make all views with app-id "bar" and any title use client-side decorations
-riverctl rule-add -app-id "bar" csd
+# riverctl rule-add -app-id "bar" csd
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
@@ -183,4 +179,5 @@ rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
 # todo send to other file or exec once
 waybar &
 mako &
+eww daemon
 swaybg -o \* -i /home/charalambos/Pictures/papes/1743295573265018.png -m fill

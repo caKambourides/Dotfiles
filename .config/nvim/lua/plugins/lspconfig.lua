@@ -197,7 +197,11 @@ return {
             },
             rust_analyzer = {
                 capabilities = capabilities
-            }
+            },
+            ols = {
+                cmd = { "odinls" },
+                capabilities = capabilities
+            },
 
 
 

@@ -10,6 +10,7 @@
 ;(setq evil-undo-system 'undo-fu)     ;; lightweight alternative
 (use-package undo-tree
   :ensure t
+  :defer t
   :hook (after-init . global-undo-tree-mode))
 
 ;; Prevent undo tree files from polluting your git repo
@@ -25,6 +26,7 @@
 ;(global-tree-sitter-mode)
 (use-package treesit-auto
   :ensure t
+  :defer t
   :custom
   (treesit-auto-install 'prompt)
   :config
@@ -62,6 +64,7 @@
 ;;todo lsp mode
 (use-package lsp-mode
   :ensure t
+  :defer t
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
@@ -82,6 +85,7 @@
 ;;errors
 (use-package flycheck
   :ensure t
+  :defer t
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
@@ -100,6 +104,7 @@
 ;;autocomplete
 (use-package corfu
   :ensure t
+  :defer t
   :init
   (global-corfu-mode))
 ;; (use-package company
@@ -122,9 +127,9 @@
 
 ;;indent behavior
 (setq-default indent-tabs-mode nil) ;;use spaces instead of tabs
-(electric-indent-mode -1) ;;disable atrocious electric indent 
+(electric-indent-mode -1) ;;disable atrocious electric indent
 (global-set-key (kbd "RET") #'newline-and-indent) ;;dumb indent on new line
-(setq tab-always-indent nil) ;;remap tab to add indents 
+(setq tab-always-indent nil) ;;remap tab to add indents
 (setq tab-width 4)
 
 ;;todo magit
@@ -134,12 +139,15 @@
 ;;todo vterm
 (use-package vterm
   :ensure t
+  :defer t
   :config
 (setq shell-file-name "/bin/sh"
       vterm-max-scrollback 5000))
+(setq vterm-timer-delay nil)
 
-(use-package eat
-  :ensure t)
+;; (use-package eat
+;;   :ensure t)
+
 ;;todo verb mode
 ;; (use-package verb
 ;;   :ensure t
@@ -150,8 +158,8 @@
 ;; (package-vc-install "https://github.com/JasZhe/hurl-mode")
 ;; (use-package hurl-mode :mode "\\.hurl\\'")
 
-(use-package logview
-  :ensure t)
+;; (use-package logview
+;;   :ensure t)
 
 (provide 'programming)
 ;;; programming.el ends here
