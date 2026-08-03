@@ -32,6 +32,20 @@
 #tags button.focused{
   color: @yellow;
 }
+/* sway */
+#workspaces button {
+  color: @gray;
+}
+
+#workspaces button.persistent,
+#workspaces button.visible {
+  color: @white;
+}
+
+#workspaces button.focused {
+  color: @yellow;
+}
+
 /* The whole bar */
 #waybar {
     background-color: rgba(0, 0, 0, 0.7);
