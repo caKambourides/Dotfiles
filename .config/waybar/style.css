@@ -5,7 +5,7 @@
 
 * {
     font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;  /* Slightly smaller font size */
+    font-size: 14px;
     font-weight: 900;
     margin: 0;
     padding: 0;
@@ -13,13 +13,6 @@
     transition-duration: 0.5s;
 }
 
-/* Reset all styles */
-* {
-    border: none;
-    /*border-radius: 3px;*/
-    min-height: 0;
-    /*margin: 0.2em 0.3em 0.2em 0.3em; */
-}
 /* river */
 #tags button {
   color: @gray;
@@ -67,7 +60,6 @@ window#waybar.hidden {
     color: @foreground;
     background-color: @default-background;
     transition: all 0.3s ease-in-out;
-    font-size: 13px;  /* Slightly smaller font size */
 }
 
 #workspaces button.active {
@@ -91,7 +83,6 @@ window#waybar.hidden {
 
 #window {
     background-color: @default-background;
-    font-size: 15px;   /* Slightly smaller font size */
     font-weight: 800;
     color: @foreground;
     
