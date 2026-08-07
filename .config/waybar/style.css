@@ -4,11 +4,12 @@
 @define-color green #B8BB26;
 
 * {
-    font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    /* font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
+    font-family: sans-serif;
     font-size: 14px;
     font-weight: 900;
-    margin: 0;
-    padding: 0;
+    /* margin: 0; */
+    /* padding: 0; */
     transition-property: background-color;
     transition-duration: 0.5s;
 }
@@ -46,7 +47,6 @@
     transition-property: background-color;
     transition-duration: 0.5s;
     border-radius: 0px;
-    margin: 0px 0px;
 }
 
 window#waybar.hidden {
@@ -78,7 +78,7 @@ window#waybar.hidden {
 
 #workspaces {
     background-color: @default-background;
-    padding: 3px 6px;  /* Adjusted padding to reduce height */
+    /* padding: 3px 6px; */  /* Adjusted padding to reduce height */
 }
 
 #window {
@@ -126,51 +126,51 @@ window#waybar.hidden {
 
 #custom-screenshot_t {
     background-color: @default-background;
-    border-radius: 14px;
+    /* border-radius: 14px; */
     padding: 6px;
 }
 
 #custom-spotify {
     background-color: @default-background;
-    border-radius: 14px;
+    /* border-radius: 14px; */
     padding: 3px 12px;
 }
 
 #tray {
     background-color: @default-background;
-    border-radius: 14px;
-    padding: 6px;  /* Adjusted padding */
+    /* border-radius: 14px; */
+    /* padding: 6px;  */
 }
 
 #cpu {
     color: #fb958b;
     background-color: @default-background;
-    padding: 6px;
+    /* padding: 6px; */
 }
 
 #memory {
     color: #ebcb8b;
     background-color: @default-background;
-    padding: 6px;
+    /* padding: 6px; */
 }
 
 #custom-power {
     background-color: @default-background;
-    border-radius: 14px;
-    padding: 6px;
+    /* border-radius: 14px; */
+    /* padding: 6px; */
 }
 
 #custom-storage {
     background-color: @default-background;
-    border-radius: 14px;
-    padding: 6px;
+    /* border-radius: 14px; */
+    /* padding: 6px; */
 }
 
 #custom-launcher {
     background-color: #1b242b;
     color: #6a92d7;
-    border-radius: 7.5px;
-    padding: 3px 6px;  /* Adjusted padding */
+    /* border-radius: 7.5px; */
+    /* padding: 3px 6px; */  /* Adjusted padding */
 }
 
 #custom-weather.severe {
