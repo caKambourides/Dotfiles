@@ -12,11 +12,7 @@
 (setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
-;;multi cursors
-(use-package evil-mc
-  :ensure t
-  :defer t
-  :hook (after-init . global-evil-mc-mode))
+
 ;;better keybinds (for eg magit)
 (use-package evil-collection
   :ensure t
@@ -24,9 +20,13 @@
   :after evil
   :init (evil-collection-init))
 (evil-set-undo-system 'undo-tree)
+;;multi cursors
+(use-package evil-mc
+  :ensure t
+  :defer t
+  :hook (after-init . global-evil-mc-mode))
 
 ;; BOON
-
 ;; (unless (package-installed-p 'boon)
 ;;   (package-install 'boon))
 ;; (require 'boon-qwerty)

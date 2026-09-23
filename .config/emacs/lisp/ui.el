@@ -15,13 +15,18 @@
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
 
-;; (use-package doom-themes
-;;   :ensure t
-;;   :config
-;;   (load-theme 'wombat t)) ;;set theme here
-;; ;transparency
-;; (add-to-list 'default-frame-alist '(alpha-background . 95)) ; For all new frames henceforth
-(load-theme 'wombat t)
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'modus-vivendi-deuteranopia t)) ;;set theme here
+;transparency
+(add-to-list 'default-frame-alist '(alpha-background . 95)) ; For all new frames henceforth
+(defadvice load-theme 
+  (before theme-dont-propagate activate)
+  (mapc #'disable-theme custom-enabled-themes))
+
+
+;;(load-theme 'wombat t)
 
 ;;todo modeline
 (use-package doom-modeline
